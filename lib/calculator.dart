@@ -1,5 +1,7 @@
 import 'package:calculator_x/calculator_display.dart';
+import 'package:calculator_x/logic/calculator_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import 'calculator_key_pad.dart';
 
@@ -16,7 +18,12 @@ class Calculator extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          CalculatorDisplay(value: "", height: displayHeight),
+          Consumer<CalculatorProvider>(builder: (context, provider, child) {
+            return CalculatorDisplay(
+              value: "${provider.result}",
+              height: displayHeight,
+            );
+          }),
           CalculatorKeyPad()
         ],
       ),

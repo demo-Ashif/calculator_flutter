@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import 'logic/calculator_provider.dart';
 import 'logic/key_symbol.dart';
 import 'logic/keys.dart';
 
@@ -48,7 +50,11 @@ class CalculatorKey extends StatelessWidget {
             elevation: 4,
           ),
           child: Text(symbol.value, style: style),
-          onPressed: () {},
+          onPressed: () {
+            CalculatorProvider provider =
+            Provider.of<CalculatorProvider>(context, listen: false);
+            provider.processCalculation(symbol);
+          },
         ),
       ),
     );

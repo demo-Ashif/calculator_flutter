@@ -1,5 +1,8 @@
 import 'package:calculator_x/calculator.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import 'logic/calculator_provider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +20,10 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: false,
       ),
-      home: Calculator(),
+      home: ChangeNotifierProvider(
+        create: (context) => CalculatorProvider(),
+        child: Calculator(),
+      ),
     );
   }
 }
